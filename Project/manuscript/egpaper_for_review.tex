@@ -1,0 +1,78 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+\usepackage{cvpr}
+\usepackage{times}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Include other packages here, before hyperref.
+
+% If you comment hyperref and then uncomment it, you should delete
+% egpaper.aux before re-running latex.  (Or just hit 'q' on the first latex
+% run, let it finish, and you should be clear).
+\usepackage[pagebackref=true,breaklinks=true,letterpaper=true,colorlinks,bookmarks=false]{hyperref}
+
+\cvprfinalcopy % *** Uncomment this line for the final submission
+
+\def\cvprPaperID{****} % *** Enter the CVPR Paper ID here
+\def\httilde{\mbox{\tt\raisebox{-.5ex}{\symbol{126}}}}
+
+% Pages are numbered in submission mode, and unnumbered in camera-ready
+\ifcvprfinal\pagestyle{empty}\fi
+\begin{document}
+
+%%%%%%%%% TITLE
+\title{ Velocity optimization for robot navigation in a known path}
+
+\author{Athira Krishnan R \\
+{\tt\small ai22resch11001@iith.ac.in}
+\and
+Tadipatri Uday Kiran Reddy \\
+{\tt\small ee19btech11038@iith.ac.in}}
+
+
+% For a paper whose authors are all at the same institution,
+% omit the following lines up until the closing ``}''.
+% Additional authors and addresses can be added with ``\and'',
+% just like the second author.
+% To save space, use either the email address or home page, not both
+
+\maketitle
+%\thispagestyle{empty}
+
+%%%%%%%%% ABSTRACT
+\begin{abstract}
+   In this we try to implement a velocity optimizer for a known path for a 4 wheeled mobile robot configuration. Many works have evolved in and around this problem area, but most of them focus on building a path rather than tracking the path. Through this work we analyze the work in three scenarios, without obstacles, with static obstacles and with dynamic obstacles in the way returned by a planner. Velocity optimizer would ensure we reach the path in an optimal time of travel.
+\end{abstract}
+
+%%%%%%%%% BODY TEXT
+\section{Introduction}
+
+As the field of robotics started to take an intelligent form with advancements in AI and computational capabilities. Convex optimization is a domain that can be applied to get feasible solutions for the robot in its motion planning for a faster traversal, obstacle avoidance and many more. In motion planning area, there are handful of intelligent algorithms (Dijkastra, A*, RRT, etc) developed to find the optimal path for a given destination. These algorithms make use of advanced data structures such as Graphs to compute optimal path in an efficient way. Whereas robots actuator takes velocity as input signal. It is essential to compute the velocities for a given path at each instant. Stephen, etal. \cite{lipp2014minimum} proposed velocity optimization with minimum time for different robot configurations. The paper limits in focus on dynamic obstacles. Zhijie, etal \cite{zhu2015convex} proposed extending the capability of elastic band path planning algorithm to dynamic state. CES has shown to improve smoothness of the trajectory and reduce the time taken to navigate.
+
+\section{Problem formulation}
+We have identified some of the constraints and objective functions involved in this problem. 
+Let $\mathbf{X}$ be matrix containing samples of known path, $\mathbf{V}$ be corresponding velocities, $t$ is Estimated Time of Arrival (ETA) which is a function of $\mathbf{X}$ and $\mathbf{V}$.
+
+\subsection{Objective}
+Goal is to minimize the time-taken to reach the destination while adhering to the given path.
+\begin{equation} \label{eq:obj}
+    \mathbf{V}^* = {argmin}_{\mathbf{V}} \{t(\mathbf{X^{~}}, \mathbf{V}) + \lambda||\mathbf{X}^{~} - \mathbf{X}||   \} 
+\end{equation}
+Here $\mathbf{X}^{~}$ is the actual position of the robot, $\lambda$ is a factor representing the weight associated with the error in path.
+
+\subsection{Constraints}
+Practically we cannot move the robot as any arbitrary velocities and accelerations, so we introduce a upper limit over these variables. Note that introducing a upper limit on accelerations will eliminate the any impulsive movements by robot.
+\begin{gather}
+    |\mathbf{V}| \le \overline{v}_{max}\\
+    \Bigg|\frac{\partial \mathbf{V}}{\partial t}\Bigg| \le \overline{a}_{max}
+\end{gather}
+Stopping condition would be ensure robot reaches the target withi
+{\small
+\bibliographystyle{ieee_fullname}
+\bibliography{egbib}
+}
+
+\end{document}
