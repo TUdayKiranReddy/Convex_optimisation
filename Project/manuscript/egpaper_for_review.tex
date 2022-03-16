@@ -50,26 +50,31 @@ Tadipatri Uday Kiran Reddy \\
 %%%%%%%%% BODY TEXT
 \section{Introduction}
 
-As the field of robotics started to take an intelligent form with advancements in AI and computational capabilities. Convex optimization is a domain that can be applied to get feasible solutions for the robot in its motion planning for a faster traversal, obstacle avoidance and many more. In motion planning area, there are handful of intelligent algorithms (Dijkastra, A*, RRT, etc) developed to find the optimal path for a given destination. These algorithms make use of advanced data structures such as Graphs to compute optimal path in an efficient way. Whereas robots actuator takes velocity as input signal. It is essential to compute the velocities for a given path at each instant. Stephen, etal. \cite{lipp2014minimum} proposed velocity optimization with minimum time for different robot configurations. The paper limits in focus on dynamic obstacles. Zhijie, etal \cite{zhu2015convex} proposed extending the capability of elastic band path planning algorithm to dynamic state. CES has shown to improve smoothness of the trajectory and reduce the time taken to navigate.
-
+As the field of robotics started to take an intelligent form with advancements in AI and computational capabilities. Convex optimization is a domain that can be applied to get feasible solutions for the robot in its motion planning for a faster traversal, obstacle avoidance and many more. In motion planning area, there are handful of intelligent algorithms (Dijkastra, A*, RRT, etc) developed to find the optimal path for a given destination. These algorithms make use of advanced data structures such as Graphs to compute optimal path in an efficient way. Whereas robots actuator takes velocity as input signal. It is essential to compute the velocities for a given path at each instant. Stephen, etal. \cite{lipp2014minimum} proposed velocity optimization with minimum time for different robot configurations. The paper limits in focus on dynamic obstacles. Zhijie, etal \cite{zhu2015convex} proposed extending the capability of elastic band path planning algorithm to dynamic state. CES has shown to improve smoothness of the trajectory and reduce the time taken to navigate. Some works \cite{schulan} optimize and as also plan the path if any obstacles are found in the way. We would like to initially investigate the convexity of the problem statement, further add such constraints like collision avoidance and re-planning of the path dynamically with changes in environment.\citep{lipp2014minimum}
 \section{Problem formulation}
 We have identified some of the constraints and objective functions involved in this problem. 
 Let $\mathbf{X}$ be matrix containing samples of known path, $\mathbf{V}$ be corresponding velocities, $t$ is Estimated Time of Arrival (ETA) which is a function of $\mathbf{X}$ and $\mathbf{V}$.
 
-\subsection{Objective}
+\begin{subsection}{Objective}
 Goal is to minimize the time-taken to reach the destination while adhering to the given path.
 \begin{equation} \label{eq:obj}
-    \mathbf{V}^* = {argmin}_{\mathbf{V}} \{t(\mathbf{X^{~}}, \mathbf{V}) + \lambda||\mathbf{X}^{~} - \mathbf{X}||   \} 
+    \mathbf{V}^* = {argmin}_{\mathbf{V}} \{t(\tilde{\mathbf{X}}, \mathbf{V}) + \lambda||\tilde{\mathbf{X}} - \mathbf{X}||_F   \} 
 \end{equation}
-Here $\mathbf{X}^{~}$ is the actual position of the robot, $\lambda$ is a factor representing the weight associated with the error in path.
+Here $\tilde{\mathbf{X}}$ is the actual position of the robot, $\lambda$ is a factor representing the weight associated with the error in path and $||.||_F$ represents Frobenius Norm.
+\end{subsection}
 
-\subsection{Constraints}
-Practically we cannot move the robot as any arbitrary velocities and accelerations, so we introduce a upper limit over these variables. Note that introducing a upper limit on accelerations will eliminate the any impulsive movements by robot.
+\begin{subsection}{Constraints}
+Practically we cannot move the robot in any arbitrary velocities and accelerations, so we introduce a upper limit over these variables. Note that introducing a upper limit on accelerations will eliminate the any impulsive movements by robot.
 \begin{gather}
     |\mathbf{V}| \le \overline{v}_{max}\\
     \Bigg|\frac{\partial \mathbf{V}}{\partial t}\Bigg| \le \overline{a}_{max}
 \end{gather}
-Stopping condition would be ensure robot reaches the target withi
+Stopping condition would be ensure robot reaches the target within maximum allowed tolerance limit ($\epsilon$). 
+\begin{equation}
+    ||\overline{\tilde{x}}_{END} -\overline{x}_{END}||_2  \le \epsilon
+\end{equation}
+\end{subsection}
+With further study and feedback from initial implementation of the problem in \textit{CVXPY} we would like to add more constraints and slightly change the objective function. Nevertheless the problem will framed such that both objective and constraints will adhere to convex optimisation rules.
 {\small
 \bibliographystyle{ieee_fullname}
 \bibliography{egbib}
