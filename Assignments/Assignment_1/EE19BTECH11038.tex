@@ -1,0 +1,98 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx} % extra features for tabular environment
+\usepackage{amsmath}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage{xspace}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usetikzlibrary{babel}
+\usepackage[american]{circuitikz}
+\usetikzlibrary{calc}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{pgfplots}
+\usepackage{amsfonts} 
+\usepackage[skins,theorems]{tcolorbox}
+\tcbset{highlight math style={enhanced,
+  colframe=red,colback=white,arc=0pt,boxrule=1pt}}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage[final]{hyperref} % adds hyper links inside the generated PDF file
+\hypersetup{
+colorlinks=true,       % false: boxed links; true: colored links
+linkcolor=blue,        % color of internal links
+citecolor=blue,        % color of links to bibliography
+filecolor=magenta,     % color of file links
+urlcolor=blue        
+}
+
+\begin{document}
+
+\title{\textbf{CONVEX OPTIMISATION}\\{\textbf{ASSIGNMENT 2}}}
+\author{\textbf{TADIPATRI UDAY KIRAN REDDY}\\\textbf{EE19BTECH11038}}
+\maketitle
+
+\section*{\hfil Question 1}
+The set \textit{C} can also be represented as,
+\begin{equation*}
+	C = \{\overline{x}: \mathbf{Y}^T\overline{x} \ge \overline{0}\}
+\end{equation*}
+Where $\mathbf{Y}$ is a matrix with columns as elements of set $S$.
+\subsection*{A: It is not a Subspace.}
+Choose $\overline{x_1}, \overline{x_2}$ from set \textit{C}, if this set is subspace then $\forall \alpha _1, \alpha _2 \in \mathbb{R}; \alpha _1\overline{x_1} + \alpha _2\overline{x_2}$ must also be in set \textit{C}.\\
+Since $\alpha _1$ and $\alpha _2$ can also take negative value which can the inequatlity, this relation cannot be valid. Thus it is not a Subspace
+
+\subsection*{B: It is not a Affine set.}
+The same explanation holds, since the only difference between affine and subspace is that in case of affine $\alpha _1 + \alpha _2 = 1$, but they can take any real values thus can be negative as well. Thus in this case also the ineqality need not satisfy.
+
+
+\subsection*{C: It is a convex set.}
+Choose $\overline{x_1}, \overline{x_2}$ from set \textit{C},
+\begin{gather*}
+	\mathbf{Y}^T(\theta \overline{x_1}) \ge \overline{0}; \mathbf{Y}^T((1 - \theta )\overline{x_2}) \ge \overline{0}\\
+	\implies \mathbf{Y}^T(\theta \overline{x_1} + (1 - \theta )\overline{x_2}) \ge \overline{0}
+\end{gather*}
+This means that for any $\theta \in [0, 1]$ the above inequality satisfies which means that the set is convex.
+
+\subsection*{D: It is a cone.}
+By definition of cone if any set is a cone then any positively scaled vector must also belong to that set.\\
+\begin{gather*}
+	\mathbf{Y}^T\overline{x} \ge \overline{0}\\
+	\implies \mathbf{Y}^T(\theta \overline{x}) \ge \overline{0}; \text{Given } \theta \ge 0
+\end{gather*}
+
+Observe that above conditions satisfied despite the nature of matrix $\mathbf{Y}$. Thus we can say that \textbf{none of the above queries depend on structure of \textit{S}}.
+
+\section*{\hfil Question 2}
+Given $f_1(\overline{x}) = ||\overline{y}-\mathbf{A}\overline{x}||_2$ and $f_2(\overline(x)) = ||\overline{y}-\mathbf{A}\overline{x}||_2^2$,\\
+\begin{list}{•}{\textbf{Useful properties}}
+	\item Norm function is convex.
+	\item Affine transformation of domain of the function does'nt change the convexity of function.
+\end{list}
+
+In case of $f_1(\overline{x})$, the domain is affine transformation of $\overline{x}$ and the norm is operated on it, from above properties the function is convex.\\
+\begin{gather*}
+	f_1(\overline{x}) = ||\Phi(\overline{x})||_2\\
+	\Phi: \overline{x} \rightarrow \overline{y}-\mathbf{A}\overline{x}
+\end{gather*}
+
+In case of $f_2(\overline{x})$,
+\begin{gather*}
+	f_2(\overline{x}) = \overline{x}^T\mathbf{A}^T\mathbf{A}\overline{x} - 2\overline{y}^T\mathbf{A}\overline{x} + \overline{y}^T\overline{y}
+\end{gather*}
+The above function is quadratic. The function is convex iff $\mathbf{A}^T\mathbf{A}$ is positive semi definite.
+\begin{gather*}
+	\mathbf{A} = \mathbf{V}\mathbf{\Sigma}\mathbf{V}^T\\
+	\implies \mathbf{A}^T\mathbf{A} = (\mathbf{V}\mathbf{\Sigma}\mathbf{V}^T)^T(\mathbf{V}\mathbf{\Sigma}\mathbf{V}^T) = \mathbf{V}\mathbf{\Sigma}^T\mathbf{\Sigma}\mathbf{V}^T
+\end{gather*}
+$\mathbf{\Sigma}^T\mathbf{\Sigma}$ has positive diagonal entries as above multiplication will yeild individual diagonal entries of $\mathbf{\Sigma}$ to square each other. Since eigen values of $\mathbf{A}^T\mathbf{A}$ are positive thus it is positive definite. Hence $f_2(\overline{x})$ is a convex function.
+\section*{\hfil Question 3}
+\subsection*{(a)}
+
+\subsection*{(b)}
+\section*{\hfil Question 4}
+\section*{\hfil Question 5}
+\section*{\hfil Question 6}
+\end{document}
