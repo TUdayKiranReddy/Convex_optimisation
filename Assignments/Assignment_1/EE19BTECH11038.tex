@@ -176,5 +176,56 @@ This point can be written as $\overline{v}=\sum_{i=1}^{3}{\theta _i}\overline{x_
 Clearly from above inequalities we see that value of any point in convex hull of polyhedra is always less than equal to the value of maximum value at vertices given \textit{f} is convex, which means maxima occurs at vertices.
 \section*{\hfil Question 4}
 \section*{\hfil Question 5}
+\subsection*{(a)}
+Let $\overline{x}^*$ be one of the optimum solution to the the function $f$ on set convex set $C$. Further it is given that bot function $f$ and set $C$ are symmentric convex.\\
+If $\overline{x}^* = \begin{pmatrix} x_1^* \\ x_2^* \end{pmatrix}$ is a solution then the following vector is also a solution $\tilde{\overline{x}} = \begin{pmatrix} x_2^* \\ x_1^* \end{pmatrix}$ since the function is symmentric $f(\overline{x}) = f(\tilde{\overline{x}})$.\\
+By convex nature of the function,\\
+\begin{gather*}
+	f(\alpha\overline{x}^* + (1-\alpha)\tilde{\overline{x}}) \le \alpha f(\overline{x}^*) + (1-\alpha)f(\tilde{\overline{x}})\\
+	\implies f(\alpha\overline{x}^* + (1-\alpha)\tilde{\overline{x}}) \le f(\overline{x}) = f(\tilde{\overline{x}}) = min_{\overline{x} \in C}\{f(\overline{x})\} \\ 
+	\implies f(\alpha\overline{x}^* + (1-\alpha)\tilde{\overline{x}}) = min_{\overline{x} \in C}\{f(\overline{x})\}
+\end{gather*}
+This means that any point on line joining the points $\overline{x}^*$ and $\tilde{\overline{x}}$ is a solution the optimisation problem.\\
+Setting $\alpha = 0.5$, $\overline{a} = \frac{\overline{x}^* + \tilde{\overline{x}}}{2} = \begin{pmatrix} \frac{x_1^* + x_2^*}{2} \\ \frac{x_2^* + x_1^*}{2} \end{pmatrix}$. Now observe that obtained $\overline{a}$ has equal coordinates. Thus there exists an optimum $\overline{x}$ with both coordinates equal.
+\subsection*{(b)}
+\textbf{AM-GM Inequality}\\
+Given $x_i \ge 0$,
+\begin{equation*}
+	\frac{1}{N}\sum_{i=1}^{N}x_i \ge \sqrt[N]{\Pi _{i=1}^{N}x_i}
+\end{equation*}
+We can solve the given optimisation problem using above inequality.\\
+\begin{gather*}
+	\sqrt[n]{x_1x_2x_3...x_n} \le \frac{1}{n}\sum_{i=1}^{n}x_i = \frac{1}{n}\\
+	\implies x_1x_2x_3...x_n \le \frac{1}{n^n}
+\end{gather*}
+Therefore, optimal value is $\frac{1}{n^n}$.
 \section*{\hfil Question 6}
+\subsection*{(a)}
+Let $g(\overline{x}) = \overline{x}^T\overline{x}$ then $f(\overline{x}, t)$ can be written as $tg(\frac{\overline{x}}{t})$. Now we look at the epigraph of $f$.
+\begin{gather*}
+	epi(f) = \left\{\begin{pmatrix}
+	\overline{x}\\
+	t\\
+	z
+	\end{pmatrix} : t > 0; z \ge f(\overline{x}, t)\right\}\\
+	epi(f) = \left\{\begin{pmatrix}
+	\overline{x}\\
+	t\\
+	z
+	\end{pmatrix} : t > 0; z \ge tg\left(\frac{\overline{x}}{t}\right)\right\} = \left\{\begin{pmatrix}
+	\overline{x}\\
+	z\\
+	t
+	\end{pmatrix} : t > 0; \frac{z}{t} \ge g\left(\frac{\overline{x}}{t}\right)\right\}
+\end{gather*}
+Now let us look at perspective of $epi(f)$,
+\begin{gather*}
+perspctive(epi(f)) = \left\{\begin{pmatrix}
+	\overline{x}/t\\
+	z/t
+	\end{pmatrix} : t > 0; \frac{z}{t} \ge g\left(\frac{\overline{x}}{t}\right)\right\}
+\end{gather*}
+We know that $g$ is convex as it is a quadratic function with positive definite hessian matrix. And above set is nothing but epigraph of $g$ thus it is also convex. Now since epigraph of $g$ is convex and it is same as perspective of epigraph of $f$. This implies that epigraph of $f$ is also convex. Thus we can conclude that $f$ is also convex as it's epigraph is convex.
+\subsection*{(b)}
+\subsection*{(c)}
 \end{document}
