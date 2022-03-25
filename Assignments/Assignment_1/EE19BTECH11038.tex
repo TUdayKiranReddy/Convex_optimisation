@@ -228,4 +228,16 @@ perspctive(epi(f)) = \left\{\begin{pmatrix}
 We know that $g$ is convex as it is a quadratic function with positive definite hessian matrix. And above set is nothing but epigraph of $g$ thus it is also convex. Now since epigraph of $g$ is convex and it is same as perspective of epigraph of $f$. This implies that epigraph of $f$ is also convex. Thus we can conclude that $f$ is also convex as it's epigraph is convex.
 \subsection*{(b)}
 \subsection*{(c)}
+Let $\tilde{\overline{x}} = \frac{\overline{x}}{||\overline{x}||_2}$ then,
+\begin{equation*}
+	f(\overline{x}) = \begin{cases}
+	||\overline{x}||_2 - 1 & if||x||_2 \ge 1\\
+	0 & otherwise
+	\end{cases}
+\end{equation*}
+We can rewrite the equation as,
+\begin{equation*}
+	f(\overline{x}) = max\{||\overline{x}||_2 - 1, 0\}
+\end{equation*}
+We know that max of convex functions is convex, $||x||_2-1$ is convex since it is just norm function but with a bias and 0 is trivially convex. Thus $f$ is convex.
 \end{document}
