@@ -13,6 +13,8 @@
 \usepackage{siunitx}
 \usepackage{pgfplots}
 \usepackage{amsfonts} 
+\usetikzlibrary{intersections}
+\usepgfplotslibrary{fillbetween}
 \usepackage[skins,theorems]{tcolorbox}
 \tcbset{highlight math style={enhanced,
   colframe=red,colback=white,arc=0pt,boxrule=1pt}}
@@ -30,7 +32,7 @@ urlcolor=blue
 
 \begin{document}
 
-\title{\textbf{CONVEX OPTIMISATION}\\{\textbf{ASSIGNMENT 2}}}
+\title{\textbf{CONVEX OPTIMISATION}\\{\textbf{ASSIGNMENT 1}}}
 \author{\textbf{TADIPATRI UDAY KIRAN REDDY}\\\textbf{EE19BTECH11038}}
 \maketitle
 
@@ -90,8 +92,88 @@ The above function is quadratic. The function is convex iff $\mathbf{A}^T\mathbf
 $\mathbf{\Sigma}^T\mathbf{\Sigma}$ has positive diagonal entries as above multiplication will yeild individual diagonal entries of $\mathbf{\Sigma}$ to square each other. Since eigen values of $\mathbf{A}^T\mathbf{A}$ are positive thus it is positive definite. Hence $f_2(\overline{x})$ is a convex function.
 \section*{\hfil Question 3}
 \subsection*{(a)}
+Convex hull of $S = \{\overline{x_1}=(0, 0), \overline{x_2}=(1, 1), \overline{x_3}=(1, 0)\}$ is just linear combination of all the vectors such that their coeefficients are positive and they sum up to 1. Since these are 3 non collinear points, which means that convex hull is just the triangle.
+\begin{figure}[H]
+    \centering
 
+
+\begin{tikzpicture}[scale=0.7]
+    \begin{axis}[
+        axis lines=center,
+        xmax = 1.1,
+        ymax = 1.1,
+        ylabel=$x_2$,
+        xlabel=$x_1$,
+        ]
+        \addplot [name path = A,domain=0:1,samples=250,  thick , blue] {x}
+            node [pos=0.9, above right] {};
+        \addplot [name path = B,domain=0:1,samples=250,  thick , blue] {0*x}
+            node [pos=0.1, above right] {};
+             \addplot [name path = C,domain=0:1,samples=250,  thick , blue] {x==1}
+            node [pos=0.1, above right] {};
+        \addplot[red!50, opacity=0.8] fill between[of=A and B];
+        \addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (0, 0)(1, 0)(1, 1)
+    };
+        
+        
+    \end{axis}
+\end{tikzpicture}
+\caption{conv(\textit{S})}
+\end{figure}
 \subsection*{(b)}
+Take a point inside convex hull,
+\begin{figure}[H]
+    \centering
+
+
+\begin{tikzpicture}[scale=0.7]
+    \begin{axis}[
+        axis lines=center,
+        xmax = 1.1,
+        ymax = 1.1,
+        ylabel=$x_2$,
+        xlabel=$x_1$,
+        ]
+        \addplot [name path = A,domain=0:1,samples=250,  thick , blue] {x}
+            node [pos=0.9, above right] {};
+        \addplot [name path = B,domain=0:1,samples=250,  thick , blue] {0*x}
+            node [pos=0.1, above right] {};
+             \addplot [name path = C,domain=0:1,samples=250,  thick , blue] {x==1}
+            node [pos=0.1, above right] {};
+        \addplot[red!50, opacity=0.8] fill between[of=A and B];
+        \addplot[red!50, opacity=0.8] fill between[of=A and B];
+        \addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (0, 0)(1, 0)(1, 1)
+    };
+        \addplot[
+    color=green,
+    mark=square,
+    ]
+    coordinates {
+    (0.7, 0.4)}
+     ;
+        
+        
+    \end{axis}
+\end{tikzpicture}
+\end{figure}
+This point can be written as $\overline{v}=\sum_{i=1}^{3}{\theta _i}\overline{x_i}$ such that $\sum_{i=1}^{3}{\theta _i} = 1$. Given f is convex function which means that,\\
+\begin{gather*}
+	f(\overline{v}) = f(\sum_{i=1}^{3}{\theta _i}\overline{x_i})\\
+	\implies f(\overline{v}) \le \sum_{i=1}^{3}{\theta _i}f(\overline{x_i})
+	f(\overline{v}) \le \sum_{i=1}^{3}{\theta _i}max\{f(\overline{x_i})\} = max\{f(\overline{x_i})\}\sum_{i=1}^{3}{\theta _i}\\
+	\implies f(\overline{v}) \le max\{f(\overline{x_i})\}
+\end{gather*}
+Clearly from above inequalities we see that value of any point in convex hull of polyhedra is always less than equal to the value of maximum value at vertices given \textit{f} is convex, which means maxima occurs at vertices.
 \section*{\hfil Question 4}
 \section*{\hfil Question 5}
 \section*{\hfil Question 6}
