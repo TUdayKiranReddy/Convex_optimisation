@@ -225,8 +225,17 @@ perspctive(epi(f)) = \left\{\begin{pmatrix}
 	z/t
 	\end{pmatrix} : t > 0; \frac{z}{t} \ge g\left(\frac{\overline{x}}{t}\right)\right\}
 \end{gather*}
+
 We know that $g$ is convex as it is a quadratic function with positive definite hessian matrix. And above set is nothing but epigraph of $g$ thus it is also convex. Now since epigraph of $g$ is convex and it is same as perspective of epigraph of $f$. This implies that epigraph of $f$ is also convex. Thus we can conclude that $f$ is also convex as it's epigraph is convex.
 \subsection*{(b)}
+If function $f$ is quasi convex then it's domain and all its $\alpha$-sublevel sets are convex are called as "Quasi-convex".\\
+Consider the below $\alpha$-sublevel set,
+\begin{gather*}
+	S_{\alpha} = \left\{\begin{pmatrix}
+	\overline{x}\\
+	t
+	\end{pmatrix}: \frac{\overline{x}^T\overline{x}}{t^2} \le \alpha \right\}
+\end{gather*}
 \subsection*{(c)}
 Let $\tilde{\overline{x}} = \frac{\overline{x}}{||\overline{x}||_2}$ then,
 \begin{equation*}
