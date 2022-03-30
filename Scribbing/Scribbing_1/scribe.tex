@@ -26,7 +26,7 @@
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
 \graphicspath{{graphics/}}
 
-\title[Lecture 4]{\large AI2100/EE5609 Convex Optimization Theory \\ \LARGE Lecture 4.1: Polyhedra,  Norm Balls, Norm Cones}
+\title[Lecture 4]{\large AI2100/EE5609 Convex Optimization Theory \\ \LARGE Lecture 4: Polyhedra,  Norm Balls, Norm Cones}
 \author[Aditya S]{Scribe(s): Athira Krishnan R, Tadipatri Uday Kiran Reddy}
 \date{\today}  % if the \date{} command is left out,\section{Norm Ball}
 
@@ -348,25 +348,114 @@ When last coordinate is positive and $t=\mathbb{C}.^\top x$, this becomes equiva
 %\bibliographystyle{plainnat}
 
 \section{Separating hyperplane theorem}
-Suppose $C_1$ and $C_2$ are nonempty disjoint convex sets, i.e, $C_1 \cap C_2 \in \Phi$. Then there exists $\overline{a} \neq 0$ and $b$ such that $\overline{a}^T\overline{x} \le b; \forall \overline{x} \in C_1$ and $\overline{a}^T\overline{x} \ge b; \forall \overline{x} \in C_2$. The hyperplane $\{\overline{x} | \overline{a}^T\overline{x} = b\}$ is called \textit{separating hyperplane} for the sets $C_1$ and $C_2$.
+Suppose $C_1$ and $C_2$ are nonempty disjoint convex sets, i.e, $C_1 \cap C_2 \in \Phi$. Then there exists $\overline{a} \neq 0$ and $b$ such that $\overline{a}^T\overline{x} \le b; \forall \overline{x} \in C_1$ and $\overline{a}^T\overline{x} \ge b; \forall \overline{x} \in C_2$. The hyperplane $\{\overline{x} | \overline{a}^T\overline{x} = b\}$ is called \textit{separating hyperplane} for the sets $C_1$ and $C_2$.\\
+\begin{proof}
+    Take $\overline{a} \in C_1$ and $\overline{b} \in C_2$ such that these two vectors form a pair that belongs to the set $inf\{||\overline{u}-\overline{v}||_2 ; \overline{u} \in C_1, \overline{v} \in C_2\}$ \\
+    Then we have to show that affine function $f(\overline{x}) = \overline{c}^T\overline{x} - d$ is the separating hyperplane such that $\overline{c} = \overline{a} - \overline{b}$ and $d = \frac{||a||_2^2 - ||b||_2^2}{2}$.\\
+    Now since f is non-negative on $C_1$ and non-positive on $C_2$, Suppose there is point $\overline{u} \in C_1$ such that $f(\overline{u}) < 0$.\\
+    \begin{gather*}
+        f(\overline{u}) = (\overline{a} - \overline{b})^T\overline{u} - \frac{||a||_2^2 - ||b||_2^2}{2} = (\overline{a} - \overline{b})^T(\overline{u}-\overline{b}) + 0.5||\overline{d}-\overline{c}||_2^2\\
+        (\overline{a} - \overline{b})^T(\overline{u}-\overline{a}) < 0\\
+        (\overline{b} - \overline{a})^T(\overline{u}-\overline{a}) > 0
+    \end{gather*}
+    The above inequality means that some point in $C_1$ makes acute angle with line joining closed of two sets which possible only when $\overline{u}$ is more closer to $\overline{b}$ than $\overline{a}$ is. As $\overline{a}$ itself is closest thus, such a $\overline{u}$ cannot exists.
+\end{proof}
 \begin{marginfigure}
 \begin{tikzpicture}[scale=0.7]
 \begin{axis}[
-        axis lines=center,
-        xmax = 1.5,
-        xmin=-1.5,
-        ymin=-1.5,
-        ymax = 1.5,
-        ylabel=$x_2$,
-        xlabel=$x_1$,
+        axis lines = left,
+        xmin=-3, xmax=3, ymin=-3, ymax=3,
+        axis equal,
+        xlabel = $x_1$,
+        ylabel = {$x_2$},
+        yticklabels={,,}
         ]
-        \addplot [domain=-2:1,samples=250,  ultra thick , blue] ({cos(x)}, {sin(x)});
-
-
-\end{axis}
+        \draw (axis cs: -1.5, 0) circle [radius=100, red];% I've set the radius to 10 only for better show the image
+        \draw (axis cs: 1.5, 0) circle [radius=100, blue];% I've set the radius to 10 only for better show the image
+        \addplot[ultra thick, samples=250, smooth,domain=-1:0,green] coordinates {(0, 2)(0, -2)};
+    \end{axis}
 % \draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
 \end{tikzpicture}
-\caption{infinite norm ball.}
+\caption{Seperating hyperplane}
 \end{marginfigure}
+\textit{Property}: Every (closed) convex set has a unique point with smallest norm.\\
 
+\section{Supporting hyperplane theorem}
+Take a point on the boundary of a convex set, drawing tangent through it will make the whole convex set lie on only one side of the line.
+\begin{marginfigure}
+\begin{tikzpicture}[scale=0.7]
+\begin{axis}[
+        axis lines = left,
+        xmin=-3, xmax=3, ymin=-3, ymax=3,
+        axis equal,
+        xlabel = $x_1$,
+        ylabel = {$x_2$},
+        yticklabels={,,}
+        ]
+        \draw (axis cs: -1.5, 0) circle [radius=100, red];
+        \addplot[ultra thick, samples=250, smooth,domain=-1:0,green] coordinates {(-3, -1)(3, -1)};
+    \end{axis}
+% \draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\end{tikzpicture}
+\caption{Supporting hyperplane}
+\end{marginfigure}
+\section{Farkas Lemma}
+Consider the below two statements,\\
+\begin{enumerate}
+    \item We can find $\overline{x} \ge \overline{0}$ such that $\mathbf{A}\overline{x} = \overline{b}$.
+    \item We cam find $\overline{a}$ such that $\overline{a}^T\overline{b} \ge 0$ ans $\mathbf{A}^T\overline{a} \le \overline{0}$
+\end{enumerate}
+Farkas lemma states that exactly only one of the above statements is true.
+\begin{proof}
+    Let $\overline{x} \ge \overline{0}$, s.t $\mathbf{A}\overline{x} = \overline{b}$ then,
+    \begin{gather*}
+        \overline{a}^T\mathbf{A}\overline{x} = \overline{a}^T\overline{b}\\
+        \implies (\mathbf{A}^T\overline{a})^T\overline{x} = \overline{a}^T\overline{b}
+    \end{gather*}
+    \textit{Assume Statement 1) is true}.\\
+    Let $\overline{a}^T\overline{b} > 0$, then not all entries of $(\mathbf{A}^T\overline{a})^T$ are negative which means that statement 2) is false.\\ \ \\
+    \textit{Assume Statement 2) is true}.\\
+    Then we cannot have all entries of $\overline{x}$ to be positive some of them must be negative to satisfy the above equation.\\
+    Thus Both Statement 1) and 2) cannot be true together.\\ \\\
+    We can also show this result using separating hyperplane theorem take convex set $C_1 = \{\mathbf{A}\overline{x}: \overline{x} \ge 0\}$, this set is cone. And another set $C_2 = \{\overline{b}\}$. Now we can always find a hyper plane which separates these two sets, note that set $C_1$ is infinite set thus plane can never form a acute angle. Thus plane would be oriented towards $\overline{b}$. 
+\end{proof}
+\begin{marginfigure}
+\begin{tikzpicture}[scale=0.7]
+\begin{axis}[
+        axis lines = left,
+        xmin=-3, xmax=3, ymin=-3, ymax=3,
+        axis equal,
+        xlabel = $x_1$,
+        ylabel = {$x_2$},
+        yticklabels={,,}
+        ]
+        \addplot[ultra thick, samples=250, smooth,domain=-1:0,green] coordinates {(-3, -3)(3, 3)}node [pos=0.8
+        , above left] {$\mathbf{A}\overline{x} = \overline{0}$};
+         \addplot[ultra thick, samples=250, smooth,domain=-1:0,blue] coordinates {(0, -3)(5, 2)}node [pos=0.6
+        , below left] {$\mathbf{A}\overline{x} = \overline{b}$};
+        \addplot[ultra thick, samples=250, smooth,domain=-1:0,red] coordinates {(-1, 1)(1, -1)}node [pos=0.6, below left] {$\overline{c}$};
+        \addplot[dotted, samples=250, smooth,domain=-1:0,black] coordinates {(0, 0)(1.5, -1.5)}node [pos=0.6, below left] {$\overline{r}$};
+        \addplot[dotted, samples=250, smooth,domain=-1:0,black] coordinates {(0, 0)(2, 2)}node [pos=0.6, below right] {$\overline{x_0}$};
+        \addplot[dotted, samples=250, smooth,domain=-1:0,black] coordinates {(0, 0)(2, -1)}node [pos=0.6, below right] {$\overline{r} + \overline{x_0}$};
+        
+    \end{axis}
+% \draw (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+\end{tikzpicture}
+\caption{Linear optimisation problem}
+\end{marginfigure}
+\textit{Problem}\\
+Consider the following optimisation problem,\\
+min $\overline{c}^T\overline{x}$ \\
+such that $\mathbf{A}\overline{x} = \overline{b}$\\ \ \\
+\textit{Solution}\\
+Let $\overline{r}$ satisfy $\mathbf{A}\overline{r} = \overline{b}$, then general solution of the above equation is $\overline{r} + \overline{x_0}$ where $\overline{x_0}$ is in null space of $\mathbf{A}$. This means that solutions to the equation is just null space shifted by $\overline{r}$. If $\overline{c}$ is perpendicular to null space of then $\overline{c}^T\overline{x} = \overline{c}^T\overline{r} + \overline{x_0} = \overline{c}^T\overline{r}$. If $\overline{c}$ is not perpendicular to null space then value is $-\infty$.
+
+\section{Linear programming problem}
+min $\overline{c}^T\overline{x}$\\
+such that $\mathbf{A}\overline{x} = \overline{b}$ and $\overline{x} \ge 0$\\ \ \\
+Any linear programming problem can be boiled down to above optimisation problem. As a consequence of farkas lemma we can show that there can exists a solution to above problem otherwise we can give a certificate that above problem has no such $\overline{x}$ which satisfies the above problem.
+
+\subsection{Ordering of Vectors}
+If $\overline{x} < \overline{y}$ then $\overline{y}-\overline{x} \in \mathcal{K}$, where $\mathcal{K}$ is a cone. Ordering changes with the choice of the cone. We usually consider first quadrant of $\mathbb{R}^2$ as our choice of cone.\\
+We can always find a pair of vectors where both $\overline{x}-\overline{y}$ and $\overline{y}-\overline{x} \not\in \mathcal{K}$, such vectors are not comparable and every choice of cone can such pairs.
 \end{document}

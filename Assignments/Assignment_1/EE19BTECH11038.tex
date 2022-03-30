@@ -175,6 +175,9 @@ This point can be written as $\overline{v}=\sum_{i=1}^{3}{\theta _i}\overline{x_
 \end{gather*}
 Clearly from above inequalities we see that value of any point in convex hull of polyhedra is always less than equal to the value of maximum value at vertices given \textit{f} is convex, which means maxima occurs at vertices.
 \section*{\hfil Question 4}
+\textit{Useful result}\\
+Block matrix $\begin{pmatrix} A & B \\ C & D\end{pmatrix} \ge 0$ iff $A \ge 0$ and $D \ge C{A}^{-1}B$ .\\
+Using the above result the set $C_1$ implies that $A \ge 0$ and $z \ge \overline{b}^TA^{-1}\overline{b}$ and before $A \in \mathbb{S}^n$ now $S \in \mathbb{S}_{++}^n$. The set formed by the above deduced equations is same as set $C_2$. And as set $C_1$ represents set of positive semi definite matrices which means it is convex, subsequently so is set $C_2$. Thus both set $C_1$ and $C_2$ are convex.
 \section*{\hfil Question 5}
 \subsection*{(a)}
 Let $\overline{x}^*$ be one of the optimum solution to the the function $f$ on set convex set $C$. Further it is given that bot function $f$ and set $C$ are symmentric convex.\\
@@ -234,8 +237,9 @@ Consider the below $\alpha$-sublevel set,
 	S_{\alpha} = \left\{\begin{pmatrix}
 	\overline{x}\\
 	t
-	\end{pmatrix}: \frac{\overline{x}^T\overline{x}}{t^2} \le \alpha \right\}
+	\end{pmatrix}: \frac{\overline{x}^T\overline{x}}{t^2} \le \alpha \right\} \equiv \left\{\left(\frac{\overline{x}}{t}\right): \left(\frac{\overline{x}}{t}\right)^T\left(\frac{\overline{x}}{t}\right) \le \alpha \right\} \\
 \end{gather*}
+Perspective of the above set is nothing but a norm ball which is convex. And this satisfies for any $\alpha$ which means that any $\alpha$ level subset is convex and already domain is convex thus this function is Quasi-convex.
 \subsection*{(c)}
 Let $\tilde{\overline{x}} = \frac{\overline{x}}{||\overline{x}||_2}$ then,
 \begin{equation*}

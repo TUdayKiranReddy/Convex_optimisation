@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.8.2)  21 MAR 2022 19:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.8.2)  27 MAR 2022 19:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1385,77 +1385,6 @@ Overfull \hbox (5.56895pt too wide) in paragraph at lines 206--230
 []  
  []
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.238     \item ||X+Y|| \le
-                            ||X||+||Y||, nonrm follows triangle inequality.
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-! LaTeX Error: Command \end{enumerate} invalid in math mode.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.239 \end{enumerate}
-                     
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.239 \end{enumerate}
-                     
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.239 \end{enumerate}
-                     
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.239 \end{enumerate}
-                     
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.241 ...(\sum_{i=1}^N|u_i|^p)^{1/p}$, where p \ge
-                                                   1. This set can be repres...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.241 ...set can be represented as $\{x| ||X|| \le
-                                                   r\}$, where r is a consta...
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
 ! Missing { inserted.
 <to be read again> 
                    \mathop 
@@ -1476,15 +1405,6 @@ I've inserted something that you may have forgotten.
 With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
-
-
-Overfull \hbox (43.1988pt too wide) in paragraph at lines 241--244
-\T1/pplj/m/n/10 N de-fined as, $\OMS/zplm/m/n/10 jj\OML/zplm/m/it/10 u\OMS/zplm
-/m/n/10 jj[] \OT1/zplm/m/n/10 = ([][] \OMS/zplm/m/n/10 j\OML/zplm/m/it/10 u[]\O
-MS/zplm/m/n/10 j[]\OT1/zplm/m/n/10 )[]$\T1/pplj/m/n/10 , where p $\OMS/zplm/m/n
-/10 ^^U \OT1/pplx/m/n/10 1.\OML/zplm/m/it/10 Thissetcanberepresentedas$\T1/pplj
-/m/n/10 {x| 
- []
 
 ! Missing $ inserted.
 <inserted text> 
@@ -1539,10 +1459,25 @@ I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
 [4]
-Overfull \hbox (5.56895pt too wide) in paragraph at lines 353--369
+Overfull \hbox (20.83778pt too wide) in paragraph at lines 364--379
 []  
  []
 
+[5]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.404 ...t 1) and 2) cannot be true together.\\ \\
+                                                  \
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+[6]
 
 Package natbib Warning: There were undefined citations.
 
@@ -1551,21 +1486,21 @@ Package bibentry Warning: You have used \nobibliography*
 (bibentry)                without a following \bibliography.
 (bibentry)                You may not be able to run BibTeX.
 
-[5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 372.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 372.
+[7]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 423.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 423.
  (./scribe.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 372.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 372.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 423.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 423.
 Package rerunfilecheck Info: File `scribe.out' has not changed.
-(rerunfilecheck)             Checksum: A81ACA47FF35BCE6583CA1FB37065F07;666.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 372.
+(rerunfilecheck)             Checksum: F94702EDBF5EE33D7A2AE9A8C2D7EB77;1149.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 423.
  ) 
 Here is how much of TeX's memory you used:
- 37657 strings out of 481239
- 862059 string characters out of 5920378
- 1557223 words of memory out of 5000000
- 52126 multiletter control sequences out of 15000+600000
+ 37660 strings out of 481239
+ 861983 string characters out of 5920378
+ 1557220 words of memory out of 5000000
+ 52121 multiletter control sequences out of 15000+600000
  602387 words of font info for 148 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  69i,12n,107p,757b,2304s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1582,10 +1517,10 @@ e/texmf-dist/fonts/type1/public/fpl/fplrij8a.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatin
 o/uplri8a.pfb>
-Output written on scribe.pdf (5 pages, 201733 bytes).
+Output written on scribe.pdf (7 pages, 208092 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
- 100 compressed objects within 1 object stream
- 19 named destinations out of 1000 (max. 500000)
- 1085 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 148 PDF objects out of 1000 (max. 8388607)
+ 124 compressed objects within 2 object streams
+ 27 named destinations out of 1000 (max. 500000)
+ 1109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
