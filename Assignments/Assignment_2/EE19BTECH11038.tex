@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx} % extra features for tabular environment
+\usepackage{amsmath}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage{xspace}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usetikzlibrary{babel}
+\usepackage[american]{circuitikz}
+\usetikzlibrary{calc}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{pgfplots}
+\usepackage{amsfonts} 
+\usetikzlibrary{intersections}
+\usepgfplotslibrary{fillbetween}
+\usepackage[skins,theorems]{tcolorbox}
+\tcbset{highlight math style={enhanced,
+  colframe=red,colback=white,arc=0pt,boxrule=1pt}}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage[final]{hyperref} % adds hyper links inside the generated PDF file
+\hypersetup{
+colorlinks=true,       % false: boxed links; true: colored links
+linkcolor=blue,        % color of internal links
+citecolor=blue,        % color of links to bibliography
+filecolor=magenta,     % color of file links
+urlcolor=blue        
+}
+
+\begin{document}
+
+\title{\textbf{CONVEX OPTIMISATION}\\{\textbf{ASSIGNMENT }}}
+\author{\textbf{TADIPATRI UDAY KIRAN REDDY}\\\textbf{EE19BTECH11038}}
+\maketitle
+
+\section*{\hfil Question 1}
+\subsection*{(a)}
+Problem (2), (3) and (4) are always convex but Problem (3) are not always convex because hessian of objective for problem (1) is,
+\begin{equation*}
+	\mathbf{H} = \mathbf{A}^T\mathbf{A} + \alpha\mathbf{I}	
+\end{equation*}
+Positive definitness of hessian is dependent on the value $\alpha$.
+\subsection*{(b)}
+\begin{gather*}
+	\Delta Objective = \left(\partial \frac{\overline{x}^T(\mathbf{A}^T\mathbf{A}+\alpha \mathbf{I})\overline{x} - \overline{y}^T\mathbf{A}\overline{x} + \overline{y}^T\overline{y}}{\partial \overline{x}}\right)^T\\
+	\implies \Delta Objective = 2(\mathbf{A}^T\mathbf{A}+\alpha \mathbf{I})\overline{x} - \overline{y}^T\mathbf{A}
+\end{gather*}
+\subsection*{(c)}
+\begin{gather*}
+	\Delta Objective = 0\\
+	\implies \overline{x}^* = 0.5(\mathbf{A}^T\mathbf{A}+\alpha \mathbf{I})^{-1}\mathbf{A}^T\overline{y}
+\end{gather*}
+\subsection*{(d)}
+\subsection*{(e)}
+
+\section*{\hfil Question 2}
+\section*{\hfil Question 3}
+\section*{\hfil Question 4}
+\section*{\hfil Question 5}
+\section*{\hfil Question 6}
+\subsection*{(a)}
+
+\subsection*{(b)}
+
+\subsection*{(c)}
+
+\subsection*{(d)}
+
+\subsection*{(e)}
+
+\subsection*{(f)}
+
+\end{document}
