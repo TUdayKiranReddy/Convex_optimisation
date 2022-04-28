@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx} % extra features for tabular environment
+\usepackage{amsmath}  % improve math presentation
+\usepackage{graphicx} % takes care of graphic including machinery
+\usepackage{xspace}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usetikzlibrary{babel}
+\usepackage[american]{circuitikz}
+\usetikzlibrary{calc}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{pgfplots}
+\usepackage{amsfonts} 
+\usetikzlibrary{intersections}
+\usepgfplotslibrary{fillbetween}
+\usepackage[skins,theorems]{tcolorbox}
+\tcbset{highlight math style={enhanced,
+  colframe=red,colback=white,arc=0pt,boxrule=1pt}}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepackage[margin=1in,letterpaper]{geometry} % decreases margins
+\usepackage{cite} % takes care of citations
+\usepackage[final]{hyperref} % adds hyper links inside the generated PDF file
+\hypersetup{
+colorlinks=true,       % false: boxed links; true: colored links
+linkcolor=blue,        % color of internal links
+citecolor=blue,        % color of links to bibliography
+filecolor=magenta,     % color of file links
+urlcolor=blue        
+}
+
+\begin{document}
+
+\title{\textbf{CONVEX OPTIMISATION}\\{\textbf{TUTORIAL 12
+}}}
+\author{\textbf{TADIPATRI UDAY KIRAN REDDY}\\\textbf{EE19BTECH11038}}
+\maketitle
+
+\section*{(a)}
+Given $f(x) = sup_{c \in \mathcal{C}}\overline{c}^T\overline{x}$. Clearly $\overline{c}^T\overline{x}$ is an affine function and it is convex. Operation $sup$ will preserve the convexity of the function. Thus $f$ is convex.
+\section*{(b)}
+Given primal (P),
+\begin{equation*}
+	\begin{aligned}
+		\max \quad & \overline{c}^T\overline{x}\\
+		\textrm{subject to} \quad & \mathbf{F}\overline{c} \le \overline{g}
+	\end{aligned}
+	\equiv 
+	\begin{aligned}
+		\min \quad & -\overline{c}^T\overline{x}\\
+		\textrm{subject to} \quad & \mathbf{F}\overline{c} \le \overline{g}
+	\end{aligned}
+	\equiv f(\overline{x})
+\end{equation*}
+Now we find the dual of this problem by taking infimum of Lagrange function over $\overline{x}$.
+\begin{gather*}
+	\mathcal{L}(\overline{x}, \overline{\lambda}) =  -\overline{c}^T\overline{x} + \lambda ^T\left(\mathbf{F}\overline{c} - \overline{g}\right)\\
+	g(\overline{\lambda}) = inf_{\overline{x}}\mathcal{L}(\overline{x}, \overline{\lambda})\\
+\end{gather*}
+Therefore the dual problem (D) is,
+\begin{equation*}
+	\begin{aligned}
+		\min \quad & \overline{\lambda}^T\overline{g}\\
+		\textrm{subject to} \quad & \mathbf{F}^T\overline{\lambda} = \overline{x}\\
+		& \lambda \ge 0
+	\end{aligned}
+\end{equation*}
+$f(\overline{x})$ is the optimal of (P) and dual gap for LPs is zero. Thus $f(\overline{x})$ is the optimal for (D) also.
+\section*{(c)}
+We can replace the objective in the \textit{Robust LP} with the dual problem.
+\begin{equation*}
+	\begin{aligned}
+		\min _{\overline{x}} \min _{\overline{\lambda}} \quad & \overline{\lambda}^T\overline{g}\\
+		\textrm{subject to} \quad & \mathbf{A}\overline{x} \ge \overline{b}\\
+		& \mathbf{F}^T\overline{\lambda} = \overline{x}\\
+		& \lambda \ge 0
+	\end{aligned}
+\end{equation*}
+Clearly both $\overline{x}$ and $\overline{\lambda}$ thus the above problem can might as well written as,
+ \begin{equation*}
+	\begin{aligned}
+		\min _{\overline{x}, \overline{\lambda}} \quad & \overline{\lambda}^T\overline{g}\\
+		\textrm{subject to} \quad & \mathbf{A}\overline{x} \ge \overline{b}\\
+		& \mathbf{F}^T\overline{\lambda} = \overline{x}\\
+		& \lambda \ge 0
+	\end{aligned}
+\end{equation*}
+Initial problem was not convex because both $\overline{x}$ and $\overline{c}$ are variable and $\overline{c}^T\overline{x}$ is not convex. But once we tranform the subproblem to dual we get a LP.
+\end{document}
