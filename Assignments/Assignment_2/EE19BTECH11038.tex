@@ -399,9 +399,9 @@ Here both eigen values are positive, which implies that hessian is positive semi
 \subsection*{(b)}
 After solving the problem with \textit{CVXPY} we get,
 \begin{gather*}
-	x_1^* = -3;
-	x_2^* = 0\\
-	\lambda _{1}^* = 5.167; \lambda _{2}^* = 1.834;\lambda _{3}^* = 0
+	x_1^* = -2.33;
+	x_2^* = -0.167\\
+	\lambda _{1}^* = 2.864; \lambda _{2}^* = 2.298;\lambda _{3}^* = 0.067
 \end{gather*}
 \subsection*{(c)}
 \textbf{KKT Conditions}\\
@@ -413,17 +413,17 @@ After solving the problem with \textit{CVXPY} we get,
 		1 & 4\\
 		5 & -76
 		\end{bmatrix}\begin{bmatrix}
-		-3\\
-		0
+		-2.33\\
+		-0.167
 		\end{bmatrix} \le \begin{bmatrix}
 		-2\\
 		-3\\
 		1
 	\end{bmatrix}
 	\implies \begin{bmatrix}
+		-2\\
 		-3\\
-		-3\\
-		-15
+		1
 	\end{bmatrix} \le \begin{bmatrix}
 		-2\\
 		-3\\
@@ -436,9 +436,9 @@ After solving the problem with \textit{CVXPY} we get,
 		\begin{bmatrix}
 		5.167 & 1.834 & 0
 		\end{bmatrix}\left(\begin{bmatrix}
+		-2\\
 		-3\\
-		-3\\
-		-15
+		1
 	\end{bmatrix} - \begin{bmatrix}
 		-2\\
 		-3\\
@@ -453,7 +453,7 @@ After solving the problem with \textit{CVXPY} we get,
 \subsection*{(e)}
 From above graph it seems like $p^*(u_1, u_2)$ is a convex function.
 \subsection*{(f)}
-Numerically derivated at the given point is 0.
+Partial numerical derivatives at $u_1 = -2$ is -2.8679 and $u_2 = -3$ is -2.294 and corresponding lambda are 2.864 and 2.298 we see that they are almost equal in magnitude.
 \begin{figure}[H]
 	\includegraphics[scale=1]{./figs/p_dash.png}
 \end{figure}
