@@ -57,6 +57,38 @@ Positive definitness of hessian is dependent on the value $\alpha$.
 \subsection*{(e)}
 
 \section*{\hfil Question 2}
+\subsection*{$f_2(\overline{x}) = \sum_{i}||\mathbf{A_i}\overline{x} - \overline{b}||_2$}
+Apply epigraph trick on the objective,
+\begin{gather*}
+	||\mathbf{A_i}\overline{x} - \overline{b}||_2 \le t_i\\
+	\begin{aligned}
+		\min \quad & \overline{1}^T\overline{t}\\
+		\textrm{s.t} \quad & ||\mathbf{A_i}\overline{x} - \overline{b}||_2 \le t_i
+	\end{aligned}
+\end{gather*}
+The above is in form of \textit{SOCP}.
+\subsection*{$f_1(\overline{x}) = \sum_{i}||\mathbf{A_i}\overline{x} - \overline{b}||_1$}
+\begin{gather*}
+	||\mathbf{A_i}\overline{x} - \overline{b}||_1 \le \overline{1}^T\overline{t_i}\\
+	\implies \mathbf{A_i}\overline{x} - \overline{b} \le \overline{t_i}; \mathbf{A_i}\overline{x} - \overline{b} \ge -\overline{t_i}\\
+	\begin{aligned}
+		\min \quad & \sum_{i}\overline{1}^T\overline{t_i} \equiv T\overline{1}\\
+		\textrm{s.t} \quad & \mathbf{A_i}\overline{x} - \overline{b} \le \overline{t_i}\\
+		& \mathbf{A_i}\overline{x} - \overline{b} \ge -\overline{t_i}
+	\end{aligned}
+\end{gather*}
+The above formulation is a \textit{LP}.
+\subsection*{$f_\infty(\overline{x}) = \sum_{i}||\mathbf{A_i}\overline{x} - \overline{b}||_\infty$}
+\begin{gather*}
+	||\mathbf{A_i}\overline{x} - \overline{b}||_\infty \le t_i\\
+	\implies \mathbf{A_i}\overline{x} - \overline{b} \le \overline{1}t_i; \mathbf{A_i}\overline{x} - \overline{b} \ge -\overline{1}t_i\\
+	\begin{aligned}
+		\min \quad & \overline{1}^T\overline{t} \\
+		\textrm{s.t} \quad & \mathbf{A_i}\overline{x} - \overline{b} \le \overline{t_i}\\
+		& \mathbf{A_i}\overline{x} - \overline{b} \ge -\overline{t_i}
+	\end{aligned}
+\end{gather*}
+The above formulation is a \textit{LP}.
 \section*{\hfil Question 3}
 \subsection*{(a)}
 To prove that the objective function is quasi-convex we ned to show that all $\alpha$ level subsets are convex.
