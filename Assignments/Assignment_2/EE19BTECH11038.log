@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.8.2)  3 MAY 2022 18:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.8.2)  3 MAY 2022 20:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1038,40 +1038,48 @@ Overfull \hbox (37.15332pt too wide) detected at line 61
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
-Underfull \hbox (badness 10000) in paragraph at lines 304--306
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
+<./figs/q5.png, id=72, 433.62pt x 289.08pt>
+File: ./figs/q5.png Graphic file (type png)
+<use ./figs/q5.png>
+Package pdftex.def Info: ./figs/q5.png  used on input line 317.
+(pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
+ [6]
+[7 <./figs/q5.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 371--373
 
  []
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 306--307
+
+Underfull \hbox (badness 10000) in paragraph at lines 373--374
 
  []
 
-<./figs/p.png, id=69, 462.528pt x 346.896pt>
+<./figs/p.png, id=93, 462.528pt x 346.896pt>
 File: ./figs/p.png Graphic file (type png)
 <use ./figs/p.png>
-Package pdftex.def Info: ./figs/p.png  used on input line 348.
+Package pdftex.def Info: ./figs/p.png  used on input line 415.
 (pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
-<./figs/p_dash.png, id=71, 462.528pt x 346.896pt>
+[8]
+<./figs/p_dash.png, id=103, 462.528pt x 346.896pt>
 File: ./figs/p_dash.png Graphic file (type png)
 <use ./figs/p_dash.png>
-Package pdftex.def Info: ./figs/p_dash.png  used on input line 355.
+Package pdftex.def Info: ./figs/p_dash.png  used on input line 422.
 (pdftex.def)             Requested size: 462.52686pt x 346.89514pt.
-[6 <./figs/p.png>] [7 <./figs/p_dash.png>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 357.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 357.
+ [9 <./figs/p.png>] [10 <./figs/p_dash.png>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 424.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 424.
  (./EE19BTECH11038.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 357.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 357.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 424.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 424.
 Package rerunfilecheck Info: File `EE19BTECH11038.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 44439 strings out of 481239
- 1169559 string characters out of 5920378
- 1680404 words of memory out of 5000000
- 59035 multiletter control sequences out of 15000+600000
+ 44461 strings out of 481239
+ 1169811 string characters out of 5920378
+ 1679404 words of memory out of 5000000
+ 59040 multiletter control sequences out of 15000+600000
  544915 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,20n,98p,856b,1012s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1092,10 +1100,10 @@ xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on EE19BTECH11038.pdf (7 pages, 365045 bytes).
+Output written on EE19BTECH11038.pdf (10 pages, 383835 bytes).
 PDF statistics:
- 159 PDF objects out of 1000 (max. 8388607)
- 126 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
- 23 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 188 PDF objects out of 1000 (max. 8388607)
+ 150 compressed objects within 2 object streams
+ 54 named destinations out of 1000 (max. 500000)
+ 28 words of extra memory for PDF output out of 10000 (max. 10000000)
 

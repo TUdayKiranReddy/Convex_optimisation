@@ -61,6 +61,36 @@ Given, $||(\mathbf{A}^T\mathbf{A}+\alpha \mathbf{I})^{-1}\mathbf{A}^T\overline{y
 \end{gather*}
 Thus $\overline{x_1}^*$ is a feasible point in Problem (2). Therefore the cost with this point will always be less than optimal cost, $\implies ||\overline{x_2}^*||_2 \le ||\overline{x_1}^*||_2$
 \subsection*{(e)}
+\subsubsection*{LP}
+\begin{gather*}
+||\mathbf{A}^T(\overline{y}-\mathbf{A}\overline{x})||_\infty \le \alpha \equiv \mathbf{A}^T(\overline{y}-\mathbf{A}\overline{x}) \le \alpha
+\end{gather*}
+Let's take epigraph form of objective,
+\begin{gather*}
+||\overline{x}|| \le t \equiv \overline{x} \le t; \overline{x} \ge -t	
+\end{gather*}
+Final reformulation is,
+\begin{gather*}
+	\begin{aligned}
+	\min \quad & t\\
+	\textrm{s.t} \quad & \mathbf{A}^T(\overline{y}-\mathbf{A}\overline{x}) \le \alpha\\
+	& \overline{x} \le t\\
+	& \overline{x} \ge -t\\
+	\end{aligned} \equiv
+	\begin{aligned}
+	\min \quad & t\\
+	\textrm{s.t} \quad & \begin{bmatrix}
+	-\mathbf{A}^T\mathbf{A}\\
+	1\\
+	-1
+	\end{bmatrix}\overline{x} \le \begin{bmatrix}
+	\alpha - \mathbf{A}^T\overline{y}\\
+	t\\
+	t
+	\end{bmatrix}
+	\end{aligned}
+\end{gather*}
+\subsubsection*{QP}
 
 \section*{\hfil Question 2}
 \subsection*{$f_2(\overline{x}) = \sum_{i}||\mathbf{A_i}\overline{x} - \overline{b}||_2$}
@@ -90,8 +120,8 @@ The above formulation is a \textit{LP}.
 	\implies \mathbf{A_i}\overline{x} - \overline{b} \le \overline{1}t_i; \mathbf{A_i}\overline{x} - \overline{b} \ge -\overline{1}t_i\\
 	\begin{aligned}
 		\min \quad & \overline{1}^T\overline{t} \\
-		\textrm{s.t} \quad & \mathbf{A_i}\overline{x} - \overline{b} \le \overline{t_i}\\
-		& \mathbf{A_i}\overline{x} - \overline{b} \ge -\overline{t_i}
+		\textrm{s.t} \quad & \mathbf{A_i}\overline{x} - \overline{b} \le \overline{1}t_i\\
+		& \mathbf{A_i}\overline{x} - \overline{b} \ge -\overline{1}t_i
 	\end{aligned}
 \end{gather*}
 The above formulation is a \textit{LP}.
@@ -141,7 +171,7 @@ Since the matrices are positve semi-definite multiplication on inequality will n
 \end{gather*}
 Since $\mathbf{A} \ge 0$ and $\mathbf{B} \ge 0$ so is $\mathbf{A}^{-1}\mathbf{B} \ge 0 \implies \frac{1-\alpha}{\alpha}\mathbf{A}^{-1}\mathbf{B} \ge 0$.Therfore the above obtained sum is just sum of positive semi definite matrices which is positive semi definite but we got negative definite which is a contradiction. Thus our assumption is wrong. Therfore $\mathbf{X}^{-1}$ is convex and so is $\overline{a}^T\mathbf{X}^{-1}\overline{a}$.
 \subsection*{(b)}
-Let $\overline{a_i}$ be ith column of identity matrix then from previous results $\overline{a_i}^T{\mathbf{X}^{-1}}\overline{a_i}$ is convex, this function just picks (i, i) element of ${\mathbf{X}^{-1}}$ which is a diagonal element. Thus diagonal elements are convex combination of $\mathbf{X}$.
+Let $\overline{a_i}$ be ith column of identity matrix then from previous results $\overline{a_i}^T{\mathbf{X}^{-1}}\overline{a_i}$ is convex, this function just picks (i, i) element of ${\mathbf{X}^{-1}}$ which is a diagonal element. Thus diagonal elements are convex functions of $\mathbf{X}$.
 \subsection*{(c)}
 $trace(\mathbf{X}^{-1})$ is just sum of diagonal elements of $\mathbf{X}^{-1}$ which are individually convex, since sum of convex functions are convex. $trace(\mathbf{X}^{-1})$ is convex.
 \subsection*{(d)}
@@ -249,6 +279,43 @@ Where, $\mathbf{Z} = \begin{bmatrix}
 \overline{t}^T
 \end{bmatrix}$
 \section*{\hfil Question 5}
+\subsection*{(a)}
+\subsubsection*{$f_1(x)$}
+This function tries to find a hyperplane which lies above all the sample points. Objective tries to keep this hyperplane as nearer to the sample points as possible.
+\subsubsection*{$f_2(x)$}
+This is just a convex hull of all samples points but we try to choose a convex hull such that the objective is maximised.
+\subsubsection*{$f_3(x)$}
+This is also a convex hull of all samples points but with less amplitude of conmbination.
+\subsection*{(b)}
+\subsubsection*{$f_1(x)$}
+Here both objective and constraints are affine. Thus the problem is both convex and concave optimisation problem.
+\subsubsection*{$f_2(x)$}
+In this we are trying to find a surface such that convex combination is maximized. Technically this is also LP with all affine constraints. But in general we can say it is concave.
+\subsubsection*{$f_3(x)$}
+Here also the problem is LP with affine constraints but in general since it is minization problem we can tell that it is convex problem.
+\subsection*{(c)}
+Since $f_1$ is LP we can say that it satisfies strong duality.
+\begin{gather*}
+	\mathcal{L}(x, m, c, \overline{\lambda}) = mx + c + \sum_{i}\lambda _i (f(i) - mi - c)\\
+	g(\lambda) = \min _{m, c} m(x - \sum_{i}\lambda _i i) + c(1-\sum_{i}\lambda _i) + \sum_{i}\lambda _i f(i)
+\end{gather*}
+This would go to infinity to avoid that, we make coefficients 0 which would yeild.
+\begin{gather*}
+	\begin{aligned}
+		\min \quad & \sum_{i}\lambda _i f(i)\\
+		\textrm{s.t} \quad & \sum_{i}\lambda _i=1\\
+		& x = \sum_{i}\lambda _i i\\
+		& \lambda _i \ge 0\\
+	\end{aligned}
+\end{gather*}
+Observe that the obtained dual is same as $f_2$ thus both their optimal values are same.
+\subsection*{(d)}
+As shown previously $f_1$ and $f_2$ are primal-dual pairs. If any dual variable is zero which means that constraint has slack,i.e,$\le0$ else constraint $=0$ this implies that if f(i) has contributed to $f_2$ which means corresponding $\alpha _i$ is 0.\\
+If three points are non colinear then at max line can pass through only 2 points which means for the third point there is slackness thus it's corresponding dual variable is 0, rest of them need not be zero. Thus in such a senario at most 2 of them can be non-zero.
+\subsection*{(e)}
+\begin{figure}[H]
+	\includegraphics[scale=1]{./figs/q5.png}
+\end{figure}
 \section*{\hfil Question 6}
 Primal is
 \begin{gather*}
