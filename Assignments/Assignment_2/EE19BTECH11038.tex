@@ -87,6 +87,28 @@ Now transformed problem is,
 \end{gather*}
 The above transformed problem has both convex objective and constraints thus it is convex optimisation problem.
 \section*{\hfil Question 4}
+\subsection*{(a)}
+\textit{Lemma:} $(\mathbf{A} + \mathbf{B})^{-1} = \mathbf{A}^{-1} - (I + \mathbf{A}^{-1}\mathbf{B})^{-1}\mathbf{A}^{-1}\mathbf{B}\mathbf{A}^{-1}$.\\
+If $g(x)$ is convex then so is $\overline{a}^Tg(x)\overline{a}$ because the map linear with respective to $g(x)$.\\
+Now it is sufficient to prove the convexity of $\mathbf{X}^{-1}$. We do this by contradiction assume that the function is not convex which means,
+\begin{gather*}
+	(\alpha \mathbf{A})^{-1} + ((1-\alpha)\mathbf{B})^{-1} < \left(\alpha \mathbf{A} + (1-\alpha)\mathbf{B}\right)^{-1}\\
+	\frac{1}{\alpha} \mathbf{A}^{-1} + \frac{1}{1-\alpha}\mathbf{B}^{-1} < \alpha \mathbf{A}^{-1} - \frac{1-\alpha}{\alpha ^2}(I + \frac{1-\alpha}{\alpha}\mathbf{A}^{-1}\mathbf{B})^{-1}\mathbf{A}^{-1}\mathbf{BA}^{-1}
+\end{gather*}
+Since the matrices are positve semi-definite multiplication on inequality will not change the sign.
+\begin{gather*}
+	\frac{1}{1-\alpha}\mathbf{B}^{-1} <  - \frac{1-\alpha}{\alpha ^2}(I + \frac{1-\alpha}{\alpha}\mathbf{A}^{-1}\mathbf{B})^{-1}\mathbf{A}^{-1}\mathbf{BA}^{-1}\\
+	\implies \left(\frac{1-\alpha}{\alpha}\mathbf{A}^{-1}\mathbf{B}\right)^2 + \left(\frac{1-\alpha}{\alpha}\mathbf{A}^{-1}\mathbf{B}\right) + I < 0
+\end{gather*}
+Since $\mathbf{A} \ge 0$ and $\mathbf{B} \ge 0$ so is $\mathbf{A}^{-1}\mathbf{B} \ge 0 \implies \frac{1-\alpha}{\alpha}\mathbf{A}^{-1}\mathbf{B} \ge 0$.Therfore the above obtained sum is just sum of positive semi definite matrices which is positive semi definite but we got negative definite which is a contradiction. Thus our assumption is wrong. Therfore $\mathbf{X}^{-1}$ is convex and so is $\overline{a}^T\mathbf{X}^{-1}\overline{a}$.
+\subsection*{(b)}
+
+\subsection*{(c)}
+
+\subsection*{(d)}
+
+\subsection*{(e)}
+
 \section*{\hfil Question 5}
 \section*{\hfil Question 6}
 Primal is
