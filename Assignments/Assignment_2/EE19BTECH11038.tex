@@ -58,19 +58,139 @@ Positive definitness of hessian is dependent on the value $\alpha$.
 
 \section*{\hfil Question 2}
 \section*{\hfil Question 3}
+\subsection*{(a)}
+To prove that the objective function is quasi-convex we ned to show that all $\alpha$ level subsets are convex.
+	\begin{gather*}
+		\frac{\overline{\mu}^T\overline{x}}{||\mathbf{V}\overline{x}||_2} \le \alpha \implies \frac{\overline{x}^T\overline{\mu}\overline{\mu}^T\overline{x}}{\overline{x}^T\mathbf{V}^T\mathbf{V}\overline{x}} \le \alpha ^2\\
+		\implies \overline{x}^T\left(\alpha ^2\mathbf{V}^T\mathbf{V} + \overline{\mu}\overline{\mu}^T\right)\overline{x} \ge 0
+	\end{gather*}
+	Given that $\mathbf{V}$ is symmentric which means $\mathbf{V}^T\mathbf{V}$ and  outer product of matrices is positive defnite matrix. Therefore sum of positive semidefnite matrices is positive semidefnite. Thus the given objective function is quasi-convex.
+\subsection*{(b)}
+\begin{gather*}
+	\overline{z} = \frac{\overline{x}}{\overline{\mu}^T\overline{x}}\\\implies
+	\frac{\overline{z}}{\overline{1}^T\overline{z}} = \frac{\frac{\overline{x}}{\overline{\mu}^T\overline{x}}}{\frac{\overline{1}^T\overline{x}}{\overline{\mu}^T\overline{x}}}\\
+	\implies \tcbhighmath[drop fuzzy shadow]{\overline{x} = \frac{\overline{z}}{\overline{1}^T\overline{z}}}\\
+	\frac{\overline{\mu}^T\overline{x}}{||\mathbf{V}\overline{x}||_2} = \frac{\overline{\mu}^T\frac{\overline{z}}{\overline{1}^T\overline{z}}}{||\mathbf{V}\frac{\overline{z}}{\overline{1}^T\overline{z}}||_2} = \frac{sgn\left(\overline{1}^T\overline{z}\right)}{||\mathbf{V}\overline{z}||_2}
+\end{gather*}
+Given $\overline{\mu}^T\overline{x} \ge 0$ and $\overline{1}^T\overline{x} = 1$ which means $\overline{1}^T\overline{z} = \frac{1}{\overline{\mu}^T\overline{x}} > 0$.
+\begin{gather*}
+	\implies \tcbhighmath[drop fuzzy shadow]{\frac{\overline{\mu}^T\overline{x}}{||\mathbf{V}\overline{x}||_2} = \frac{1}{||\mathbf{V}\overline{z}||_2}}\\
+	||\overline{x}||_1 \le L \implies ||\frac{\overline{z}}{\overline{1}^T\overline{z}}||_1 \le L\\
+	{||\overline{z}||_1} \le L{\overline{1}^T\overline{z}}
+\end{gather*}
+Now transformed problem is,
+\begin{gather*}
+	\begin{aligned}
+		\min \quad & ||\mathbf{V}\overline{z}||_2\\
+		\textrm{s.t} \quad & {||\overline{z}||_1} \le L{\overline{1}^T\overline{z}}
+	\end{aligned}
+\end{gather*}
+The above transformed problem has both convex objective and constraints thus it is convex optimisation problem.
 \section*{\hfil Question 4}
 \section*{\hfil Question 5}
 \section*{\hfil Question 6}
+Primal is
+\begin{gather*}
+	\overline{x} = \begin{bmatrix}
+	x_1 \\
+	x_2 
+	\end{bmatrix}\\
+	\begin{aligned}
+		\min \quad & \overline{x}^T\begin{bmatrix}
+		1 & -0.5\\
+		-0.5 & 2
+		\end{bmatrix}\overline{x} + \begin{bmatrix}
+		-1 & 0
+		\end{bmatrix}\overline{x}\\
+		\textrm{s.t} \quad & \begin{bmatrix}
+		1 & -2\\
+		1 & 4\\
+		5 & -76
+		\end{bmatrix}\overline{x} \le \begin{bmatrix}
+		u_1\\
+		u_2\\
+		1
+		\end{bmatrix}
+	\end{aligned}
+\end{gather*}
+Dual is 
 \subsection*{(a)}
-
+The above objective is in quadratic form and eigen decomposition of the hessian is
+\begin{gather*}
+	\begin{bmatrix}
+		1 & -0.5\\
+		-0.5 & 2
+	\end{bmatrix} = \begin{bmatrix}
+		-0.92387953 & 0.38268343\\
+		-0.38268343 & -0.92387953
+		\end{bmatrix}\begin{bmatrix}
+		0.79289322 & 0\\
+		0 & 2.20710678
+		\end{bmatrix}\begin{bmatrix}
+		-0.92387953 & -0.38268343\\
+		0.38268343 & -0.92387953
+		\end{bmatrix}
+\end{gather*}
+Here both eigen values are positive, which implies that hessian is positive semidefnite. With linear constraints, The problem is convex and is a QP.
 \subsection*{(b)}
-
+After solving the problem with \textit{CVXPY} we get,
+\begin{gather*}
+	x_1^* = -3;
+	x_2^* = 0\\
+	\lambda _{1}^* = 5.167; \lambda _{2}^* = 1.834;\lambda _{3}^* = 0
+\end{gather*}
 \subsection*{(c)}
-
+\textbf{KKT Conditions}\\
+\begin{enumerate}
+	\item $f_i(x^*) \le 0$, Satisfied.\\
+	\begin{gather*}
+	\begin{bmatrix}
+		1 & -2\\
+		1 & 4\\
+		5 & -76
+		\end{bmatrix}\begin{bmatrix}
+		-3\\
+		0
+		\end{bmatrix} \le \begin{bmatrix}
+		-2\\
+		-3\\
+		1
+	\end{bmatrix}
+	\implies \begin{bmatrix}
+		-3\\
+		-3\\
+		-15
+	\end{bmatrix} \le \begin{bmatrix}
+		-2\\
+		-3\\
+		1
+	\end{bmatrix}
+	\end{gather*}
+	\item $\lambda _i^* \ge 0$, Satisfied.
+	\item $\lambda _i^*f_i(x^*) = 0$, Satisfied.
+	\begin{gather*}
+		\begin{bmatrix}
+		5.167 & 1.834 & 0
+		\end{bmatrix}\left(\begin{bmatrix}
+		-3\\
+		-3\\
+		-15
+	\end{bmatrix} - \begin{bmatrix}
+		-2\\
+		-3\\
+		1
+	\end{bmatrix}\right) = 0
+	\end{gather*}
+\end{enumerate}
 \subsection*{(d)}
-
+\begin{figure}[H]
+	\includegraphics[scale=1]{./figs/p.png}
+\end{figure}
 \subsection*{(e)}
-
+From above graph it seems like $p^*(u_1, u_2)$ is a convex function.
 \subsection*{(f)}
-
+Numerically derivated at the given point is 0.
+\begin{figure}[H]
+	\includegraphics[scale=1]{./figs/p_dash.png}
+\end{figure}
 \end{document}
