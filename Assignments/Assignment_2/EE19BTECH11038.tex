@@ -91,7 +91,43 @@ Final reformulation is,
 	\end{aligned}
 \end{gather*}
 \subsubsection*{QP}
-
+\begin{gather*}
+	||\overline{x}||_1 \le t \implies \overline{x} \le t; \overline{x} \ge -t
+\end{gather*}
+Now let $\overline{z} = \begin{bmatrix}
+\overline{x}\\
+t
+\end{bmatrix}$,
+\begin{gather*}
+\mathbf{A}\overline{x} - \overline{b} = \begin{bmatrix}
+\mathbf{A} & 0
+\end{bmatrix}\overline{z} - \overline{b} = \mathbf{U}\overline{z} - \overline{b}\\
+\alpha t = \begin{bmatrix}
+\overline{0} & 1
+\end{bmatrix}\overline{z}\\
+||\mathbf{A}\overline{x} -\overline{b}||_2^2 + \alpha ||\overline{x}||_1 \le ||\mathbf{U}\overline{z} - \overline{b}||_2^2 + \begin{bmatrix}
+\overline{0} & 1
+\end{bmatrix}\overline{z}\\
+\mathbf{U}^T\mathbf{U} = \begin{bmatrix}
+\mathbf{A} & \overline{0}\\
+\overline{0} & 0
+\end{bmatrix} \ge 0
+\end{gather*}
+Final reformation is,
+\begin{gather*}
+	\begin{aligned}
+		\min \quad & ||\mathbf{U}\overline{z} - \overline{b}||_2^2 + \begin{bmatrix}
+\overline{0} & 1
+\end{bmatrix}\overline{z}\\
+	\textrm{s.t} \quad & \begin{bmatrix}
+	\overline{1} & 0\\
+	\overline{1} & 0\\ 
+	\end{bmatrix}\overline{z} \ge \begin{bmatrix}
+	t\\
+	-t
+	\end{bmatrix}
+	\end{aligned}
+\end{gather*}
 \section*{\hfil Question 2}
 \subsection*{$f_2(\overline{x}) = \sum_{i}||\mathbf{A_i}\overline{x} - \overline{b}||_2$}
 Apply epigraph trick on the objective,
